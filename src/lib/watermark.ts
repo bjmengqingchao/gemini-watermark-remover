@@ -40,7 +40,7 @@ export function removeWatermark(
       const imgIdx = ((y + row) * imageData.width + (x + col)) * 4;
       const alphaIdx = row * width + col;
       const baseAlpha = alphaMap[alphaIdx];
-      
+
       // Calculate effective alpha for multiple overlapping watermarks
       const rawAlpha = 1 - Math.pow(1 - baseAlpha, layers);
 
