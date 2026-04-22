@@ -37,7 +37,6 @@ export default function App() {
   const [engine, setEngine] = useState<WatermarkEngine | null>(null);
   const [layers, setLayers] = useState<number>(1);
   const [alphaGain, setAlphaGain] = useState<number>(1.0);
-  const [downloadPending, setDownloadPending] = useState<{url: string, filename: string, isPdf: boolean} | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addMoreInputRef = useRef<HTMLInputElement>(null);
 
@@ -199,6 +198,16 @@ export default function App() {
     reprocessAllImages(layers, newGain);
   };
 
+  const triggerDownload = (url: string, filename: string, isPdf: boolean) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    if (isPdf) link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const resetState = () => {
     setItems([]);
     if (fileInputRef.current) fileInputRef.current.value = "";
@@ -206,7 +215,35 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50 p-8 font-sans">
+    <div className="min-h-screen bg-zinc-950 text-zinc-50 p-8 font-sans relative">
+      {/* Sponsor Section - Top Right */}
+      <div className="fixed top-6 right-6 z-20 hidden lg:block">
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 w-48 shadow-2xl space-y-3">
+          <div className="flex items-center gap-2 text-emerald-400 mb-1">
+            <Heart className="w-4 h-4 fill-current" />
+            <span className="text-xs font-bold uppercase tracking-wider">赞助支持</span>
+          </div>
+          <div className="bg-white p-1.5 rounded-lg relative overflow-hidden group">
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-2 text-center z-0 bg-zinc-50">
+              <span className="text-[10px] font-medium text-zinc-400">加载中...</span>
+            </div>
+            <img 
+              src={thanksImg} 
+              alt="赞助支持" 
+              className="w-full h-auto aspect-square rounded object-contain relative z-10"
+            />
+          </div>
+          <div className="space-y-1">
+             <p className="text-[10px] text-zinc-400 leading-relaxed">
+              如果这个工具对您有帮助，欢迎扫码赞助支持开发者。
+             </p>
+             <p className="text-[10px] text-zinc-500 font-medium">
+              金额随心定，感谢支持！
+             </p>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-5xl mx-auto space-y-8">
         <header className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight text-white flex items-center justify-center gap-3">
@@ -216,6 +253,17 @@ export default function App() {
           <p className="text-zinc-400 max-w-2xl mx-auto">
             支持批量上传图片或单个上传 PDF。所有处理均在您的浏览器中本地极速并发运行。
           </p>
+          
+          {/* Mobile Sponsor Header */}
+          <div className="lg:hidden flex justify-center mt-2">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-3 flex items-center gap-4 max-w-sm">
+                <img src={thanksImg} alt="赞助" className="w-12 h-12 rounded bg-white p-0.5 object-contain" />
+                <div className="text-left">
+                  <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">感谢赞助</p>
+                  <p className="text-[10px] text-zinc-400">金额随心，感谢支持开发者继续维护</p>
+                </div>
+            </div>
+          </div>
         </header>
 
         <div className="flex justify-center mb-8">
@@ -366,11 +414,11 @@ export default function App() {
 
                     {item.processedUrl && (
                       <button
-                        onClick={() => setDownloadPending({
-                          url: item.processedUrl!,
-                          filename: `no-watermark-${item.fileName}`,
-                          isPdf: item.isPdf
-                        })}
+                        onClick={() => triggerDownload(
+                          item.processedUrl!,
+                          `no-watermark-${item.fileName}`,
+                          item.isPdf
+                        )}
                         className="flex items-center gap-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-medium transition-colors"
                       >
                         <Download className="w-4 h-4" />
@@ -445,56 +493,6 @@ export default function App() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
-
-        {downloadPending && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl relative">
-              <button
-                onClick={() => setDownloadPending(null)}
-                className="absolute top-4 right-4 text-zinc-500 hover:text-zinc-300 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              
-              <div className="w-16 h-16 bg-[#07C160]/10 text-[#07C160] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8" />
-              </div>
-              
-              <h3 className="text-xl font-bold text-white mb-2">支持一下开发者</h3>
-              <p className="text-zinc-400 text-sm mb-6">
-                处理完成！如果这个工具对您有帮助，欢迎使用微信扫码赞赏，金额随您心情定~ 
-              </p>
-              
-              <div className="bg-white p-2 rounded-xl inline-block mb-6 shadow-sm border border-zinc-200 relative group overflow-hidden">
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-0 bg-zinc-50">
-                  <span className="text-xs font-medium text-zinc-400">正在加载...</span>
-                  <span className="text-[10px] text-zinc-400 mt-1 scale-90">若不显示请关闭广告拦截</span>
-                </div>
-                <img 
-                  src={thanksImg} 
-                  alt="图片" 
-                  loading="eager"
-                  fetchPriority="high"
-                  className="w-48 h-48 rounded-lg object-contain relative z-10"
-                />
-                <p className="text-zinc-500 text-[10px] font-bold mt-2 text-center tracking-widest relative z-10 bg-white">扫一扫，支持开发者</p>
-              </div>
-              
-              <div className="flex flex-col gap-3">
-                <a
-                  href={downloadPending.url}
-                  download={downloadPending.filename}
-                  target={downloadPending.isPdf ? "_blank" : undefined}
-                  onClick={() => setDownloadPending(null)}
-                  className="w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 px-4 py-3 rounded-xl font-medium transition-colors flex items-center justify-center gap-2"
-                >
-                  <Download className="w-4 h-4" />
-                  保存文件
-                </a>
-              </div>
             </div>
           </div>
         )}
