@@ -40,6 +40,13 @@ npm run build  # Generates production dist folder
 
 ---
 
+## ⭐ Star the Project / 给个星星
+
+If you find this project useful, please give it a **Star**! It helps more people discover this tool and encourages the developer to keep improving it.
+如果您觉得这个项目对您有帮助，请给个 **Star**！您的支持是作者持续维护和更新的最大动力。
+
+---
+
 <a name="chinese"></a>
 ## 中文介绍
 
@@ -75,7 +82,7 @@ If this tool has improved your productivity, feel free to support the developer!
 如果这个项目提高了您的工作效率，欢迎支持作者的持续维护与更新！
 
 <p align="center">
-  <img src="./public/sponsor.jpg" width="250" alt="Support" />
+  <img src="public/sponsor.jpg" width="250" alt="Support" />
   <br />
   <b>Thank you for your kindness! | 感谢每一份善意！</b>
 </p>
