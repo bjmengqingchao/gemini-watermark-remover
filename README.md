@@ -1,20 +1,62 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 Watermark Remover | 干净、纯粹、本地化的水印消除利器
 
-# Run and deploy your AI Studio app
+一款基于浏览器端的高性能水印移除工具。针对特定图层式水印进行了深度优化，无需上传服务器，保护隐私的同时，提供极速的处理体验。
 
-This contains everything you need to run your app locally.
+## 🔗 在线体验 (Live Demo)
 
-View your app in AI Studio: https://ai.studio/apps/24361244-6b8c-40c3-8b37-69c49386f94d
+访问地址：[**epiworld.tech**](https://epiworld.tech)
 
-## Run Locally
+## ✨ 核心特性 (Key Features)
 
-**Prerequisites:**  Node.js
+- **🔒 隐私安全 (Privacy First)**：所有逻辑均在浏览器本地运行，您的素材永远不会离开您的电脑，100% 保护隐私。
+- **⚡ 极速并发 (High Performance)**：利用现代浏览器计算能力，支持多任务同时并发处理，效率翻倍。
+- **📂 深度优化 (Deep Optimization)**：
+  - 针对复杂图层水印（如某些 AI 生成图自带的特定标记）进行专项优化。
+  - 支持手动调节 **“水印层数”** 与 **“去除强度”**，精准适配不同场景。
+- **📄 格式友好 (Format Support)**：
+  - 支持 PNG, JPG, WebP 图像批量处理。
+  - 特别支持 NotebookLM 等工具生成的 PDF 文件的自动化水印清理。
+- **🎨 极简交互 (Minimalist UI)**：拖拽即上传，列表化实时预览，处理完成即刻保存。
 
+## 🛠 如何使用 (How to Use)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **上传素材**：
+   - 将需要处理的图像或 PDF 文件直接拖入网页中央，或点击虚线框选择文件。
+2. **选择模式**：
+   - **图像模式**：针对传统图片，可以根据去除效果动态调整层数（1-3层）和强度（0.5-2.0）。
+   - **NotebookLM 模式**：针对特定 PDF 文档优化。
+3. **实时预览**：
+   - 处理后的效果会实时显示在右侧对比框中，供您即时检查。
+4. **下载保存**：
+   - 点击文件标题旁的 “下载此文件” 按钮，一键保存无水印成果。
+
+## 📦 本地开发与部署 (Local Development)
+
+该项目基于 **React 18 + Vite + Tailwind CSS** 构建。
+
+```bash
+# 1. 克隆代码或下载压缩包
+# 2. 进入项目目录并安装依赖
+npm install
+
+# 3. 启动开发服务器 (监听 3000 端口)
+npm run dev
+
+# 4. 构建生产环境版本 (生成 dist 目录)
+npm run build
+```
+
+## 💖 赞助支持 (Sponsorship)
+
+如果这个项目提高路您的工作效率，或者您觉得它挺好用，欢迎通过以下方式支持作者的持续维护与技术更新！
+
+<p align="center">
+  <img src="./public/sponsor.jpg" width="250" alt="WeChat Pay Support" />
+  <br />
+  <b>金额随心，感谢每一份善意与支持！</b>
+</p>
+
+---
+
+## 📜 声明
+本项目仅供技术交流与学习使用，由于使用不当产生的版权风险由使用者自行承担。
