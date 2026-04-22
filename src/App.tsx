@@ -13,7 +13,9 @@ import {
   AlertCircle,
   Plus,
   X,
-  Heart
+  Heart,
+  Github,
+  Star
 } from "lucide-react";
 import { WatermarkEngine } from "./lib/watermark";
 import { processNotebookLmImage, processNotebookLmPdf } from "./lib/notebooklm";
@@ -241,6 +243,20 @@ export default function App() {
               金额随心定，感谢支持！
              </p>
           </div>
+          <div className="pt-2 border-t border-zinc-800">
+            <a 
+              href="https://github.com/bjmengqingchao/gemini-watermark-remover" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-between group/star"
+            >
+              <div className="flex items-center gap-2 text-zinc-400 group-hover/star:text-amber-400 transition-colors">
+                <Star className="w-3.5 h-3.5 fill-current" />
+                <span className="text-[10px] font-bold">点个 Star</span>
+              </div>
+              <Github className="w-3.5 h-3.5 text-zinc-500 group-hover/star:text-white transition-colors" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -253,6 +269,21 @@ export default function App() {
           <p className="text-zinc-400 max-w-2xl mx-auto">
             支持批量上传图片或单个上传 PDF。所有处理均在您的浏览器中本地极速并发运行。
           </p>
+
+          <div className="flex justify-center gap-4">
+            <a 
+              href="https://github.com/bjmengqingchao/gemini-watermark-remover" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-1.5 bg-zinc-900 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all group"
+            >
+              <Github className="w-4 h-4" />
+              <span className="text-sm font-medium">GitHub 源码</span>
+              <div className="h-3 w-px bg-zinc-800 mx-1"></div>
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              <span className="text-sm font-medium group-hover:text-amber-400">给个星星</span>
+            </a>
+          </div>
           
           {/* Mobile Sponsor Header */}
           <div className="lg:hidden flex justify-center mt-2">
