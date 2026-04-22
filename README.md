@@ -74,6 +74,20 @@ If you find this project useful, please give it a **Star**! It helps more people
 3. **实时预览**：处理后的效果会实时显示在右侧对比框中。
 4. **下载保存**：点击 “下载此文件” 按钮，一键保存成果。
 
+---
+
+## 💖 Sponsorship / 赞助支持
+
+If this tool has improved your productivity, feel free to support the developer!
+如果这个项目提高了您的工作效率，欢迎支持作者的持续维护与更新！
+
+<p align="center">
+  <img src="sponsor.jpg" width="250" alt="Support" />
+  <br />
+  <b>Thank you for your kindness! | 感谢每一份善意！</b>
+</p>
+
+---
 
 ## 📜 License / 声明
 This project is for technical exchange and learning only. Users assume all copyright risks associated with improper use.
