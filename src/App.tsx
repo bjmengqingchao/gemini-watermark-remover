@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { WatermarkEngine } from "./lib/watermark";
 import { processNotebookLmImage, processNotebookLmPdf } from "./lib/notebooklm";
-import thanksImg from "./thanks.jpg";
+import { SPONSOR_IMAGE_BASE64 } from "./assets-base64";
 
 type AppMode = "gemini" | "notebooklm";
 
@@ -228,7 +228,7 @@ export default function App() {
               <span className="text-[10px] font-medium text-zinc-400">加载中...</span>
             </div>
             <img 
-              src={thanksImg} 
+              src={SPONSOR_IMAGE_BASE64} 
               alt="赞助支持" 
               className="w-full h-auto aspect-square rounded object-contain relative z-10"
             />
@@ -257,7 +257,7 @@ export default function App() {
           {/* Mobile Sponsor Header */}
           <div className="lg:hidden flex justify-center mt-2">
             <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-3 flex items-center gap-4 max-w-sm">
-                <img src={thanksImg} alt="赞助" className="w-12 h-12 rounded bg-white p-0.5 object-contain" />
+                <img src={SPONSOR_IMAGE_BASE64} alt="赞助" className="w-12 h-12 rounded bg-white p-0.5 object-contain" />
                 <div className="text-left">
                   <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">感谢赞助</p>
                   <p className="text-[10px] text-zinc-400">金额随心，感谢支持开发者继续维护</p>
