@@ -74,6 +74,13 @@ If you find this project useful, please give it a **Star**! It helps more people
 3. **实时预览**：处理后的效果会实时显示在右侧对比框中。
 4. **下载保存**：点击 “下载此文件” 按钮，一键保存成果。
 
+### 📦 本地开发与部署
+```bash
+npm install
+npm run dev    # 启动本地开发服务器（默认端口 3000）
+npm run build  # 打包生产环境文件
+```
+
 
 ## 📜 License / 声明
 This project is for technical exchange and learning only. Users assume all copyright risks associated with improper use.
